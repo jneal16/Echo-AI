@@ -7,14 +7,17 @@ from langchain.schema import SystemMessage, HumanMessage
 
 @tool
 def vector_search(query: str) -> str:
+    """Simulated vector database search for regulatory/tax answers."""
     return "[Vector DB] Simulated result: Solar panels in TX use 5-year MACRS depreciation. [source: mock-chroma]"
 
 @tool
 def fetch_tax_document(code: str) -> str:
+    """Simulates retrieving an IRS document by code."""
     return f"[IRS] Simulated: Document {code} explains MACRS for solar. [source: mock-irs]"
 
 @tool
 def get_case_law_summary(case_name: str) -> str:
+    """Simulates a legal case summary lookup."""
     return f"[Legal DB] Simulated: In *{case_name}*, court upheld MACRS. [source: mock-caselaw]"
 
 # Chat model
