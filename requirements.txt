@@ -1,4 +1,4 @@
 streamlit
 openai
 langchain==0.1.14
-langchain-community==0.0.19
+langchain-community==0.0.30
