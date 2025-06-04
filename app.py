@@ -4,11 +4,11 @@ from langchain_community.chat_models import ChatOpenAI
 from langchain.tools import tool
 from langchain.schema import SystemMessage, HumanMessage
 
-# Simulated tools (no vector DB needed)
+# Simulated tools
 
 @tool
 def vector_search(query: str) -> str:
-    return "[Vector DB] Simulated: Solar panels in TX use 5-year MACRS depreciation. [source: mock-chroma]"
+    return "[Vector DB] Simulated result: Solar panels in TX use 5-year MACRS depreciation. [source: mock-chroma]"
 
 @tool
 def fetch_tax_document(code: str) -> str:
@@ -18,13 +18,12 @@ def fetch_tax_document(code: str) -> str:
 def get_case_law_summary(case_name: str) -> str:
     return f"[Legal DB] Simulated: In *{case_name}*, court upheld MACRS. [source: mock-caselaw]"
 
-tools = [vector_search, fetch_tax_document, get_case_law_summary]
-
+# Chat model
 llm = ChatOpenAI(model="gpt-4", temperature=0)
 
-# --- UI ---
+# Streamlit UI
 st.set_page_config(page_title="Echo AI", layout="centered")
-st.title("🔗 Echo AI (Simulated) - Multi-Tool Chatbot")
+st.title("🔗 Echo AI - Simulated Chatbot")
 
 with st.form("qa_form"):
     question = st.text_area("Ask a tax/compliance question:", height=100, placeholder="e.g., What’s the depreciation for solar panels in Texas?")
@@ -48,4 +47,4 @@ if submit and question.strip():
         st.markdown("### ✅ GPT-Formatted Answer")
         st.markdown(final_answer)
         st.markdown("---")
-        st.markdown("**Sources:** All responses simulated for demo.")
+        st.markdown("**Sources:** All responses are simulated for demonstration.")
