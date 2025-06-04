@@ -21,7 +21,7 @@ def get_case_law_summary(case_name: str) -> str:
     return f"[Legal DB] Simulated: In *{case_name}*, court upheld MACRS. [source: mock-caselaw]"
 
 # Chat model
-llm = ChatOpenAI(model="gpt-4", temperature=0)
+llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
 # Streamlit UI
 st.set_page_config(page_title="Echo AI", layout="centered")
